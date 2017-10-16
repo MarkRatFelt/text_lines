@@ -1,6 +1,7 @@
 import cv2
 
 org_img = cv2.imread("0.jpg")
+# org_img = resize_image.image_resize(org_img, width=1844)  # For me it works better so, because of my receipts and I can get a standard tunning in Morph_Rect
 
 cv2.namedWindow('image', cv2.WINDOW_NORMAL)
 imS = cv2.resize(org_img, (600, 600))
@@ -29,7 +30,7 @@ imS = cv2.resize(binary, (600, 600))
 cv2.imshow('image', imS)
 cv2.waitKey(0)
 
-morphStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 15))
+morphStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 15))  # if width = 1844, (50,7) works almost perfect for me.
 closed = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, morphStructure)
 
 cv2.namedWindow('image', cv2.WINDOW_NORMAL)
